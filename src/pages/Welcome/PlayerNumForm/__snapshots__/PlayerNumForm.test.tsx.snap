@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerNumForm should render correctlly 1`] = `
+<div
+  className="PlayerNumForm"
+>
+  <Formik
+    enableReinitialize={false}
+    initialValues={
+      Object {
+        "playerNum": 0,
+      }
+    }
+    isInitialValid={false}
+    onSubmit={[Function]}
+    render={[Function]}
+    validateOnBlur={true}
+    validateOnChange={true}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": RefSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_conditions": Array [],
+        "_defaultDefault": [Function],
+        "_deps": Array [],
+        "_excludedEdges": Array [],
+        "_exclusive": Object {},
+        "_mutate": undefined,
+        "_nodes": Array [
+          "playerNum",
+        ],
+        "_options": Object {
+          "abortEarly": true,
+          "recursive": true,
+        },
+        "_type": "object",
+        "_typeError": [Function],
+        "_whitelist": RefSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "fields": Object {
+          "playerNum": NumberSchema {
+            "_blacklist": RefSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_conditions": Array [],
+            "_deps": Array [],
+            "_exclusive": Object {
+              "min": true,
+            },
+            "_mutate": undefined,
+            "_options": Object {
+              "abortEarly": true,
+              "recursive": true,
+            },
+            "_type": "number",
+            "_typeError": [Function],
+            "_whitelist": RefSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+          },
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+      }
+    }
+  />
+</div>
+`;
