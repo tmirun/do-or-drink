@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ROUTE_PREPARATION_PATH } from '../../../AppRoutes';
 
-type PlayerNumFormValues = {
+interface PlayerNumFormValues {
   playerNum: number;
 }
 
