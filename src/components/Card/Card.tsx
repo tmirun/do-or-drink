@@ -4,10 +4,11 @@ import * as Yup from 'yup';
 
 import './Card.scss';
 
-type CartStatus = 'add' | 'edit' | 'next';
+export type CardStatus = 'add' | 'edit' | 'next';
 
 interface CardProps {
-  status: CartStatus;
+  status: CardStatus;
+  text?: string;
   onSubmit?: (text: string, ) => void;
 }
 
@@ -18,9 +19,9 @@ interface CardFormValues {
 const MIN_TEXT_LENGHT = 4;
 const MAX_TEXT_LENGHT = 140;
 
-export const Card: React.FC<CardProps> = ({status = false, onSubmit}) => {
+export const Card: React.FC<CardProps> = ({status = false, text = '', onSubmit}) => {
   
-  const initValue: CardFormValues = { text: ''};
+  const initValue: CardFormValues = { text };
   
   const onSubmitHandle = (values: CardFormValues) => {
     if(onSubmit){
@@ -30,6 +31,8 @@ export const Card: React.FC<CardProps> = ({status = false, onSubmit}) => {
 
   return (
     <Formik
+      isInitialValid
+      enableReinitialize
       initialValues={initValue}
       onSubmit={onSubmitHandle}
       validationSchema = {Yup.object().shape({
