@@ -2,22 +2,27 @@ import React from 'react'
 import { Formik, FormikProps, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './PlayerNumForm.scss';
+import { store } from '../../../stores/store';
+import { setPlayerNum } from '../../../actions/playerNum.actions';
+import { useDispatch } from 'react-redux';
 
 type PlayerNumFormValues = {
   playerNum: number;
 }
 
 export const PlayerNumForm: React.FC = () => {
-  const initValues: PlayerNumFormValues = {
-    playerNum: 0
-  }
 
-  const onSubmit = (...arg: any[]) => {
+  const dispatch = useDispatch()
+
+  const initValues: PlayerNumFormValues = { playerNum: 0 }
+
+  const onSubmit = (values: PlayerNumFormValues) => {
+    dispatch(setPlayerNum(values.playerNum));
   }
 
   return(
     <div className="PlayerNumForm">
-      <Formik 
+      <Formik
         initialValues={initValues}
         onSubmit={onSubmit}
         validationSchema = { Yup.object().shape({
