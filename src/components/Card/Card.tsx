@@ -41,10 +41,11 @@ export const Card: React.FC<CardProps> = ({status = false, text = '', onSubmit})
                           .max(MAX_TEXT_LENGHT, 'max 140 characters')
       })}
       render = {(props: FormikProps<CardFormValues>) => (
-        <form className="Card" onSubmit={(props.handleSubmit)}>
-          <Field component="textarea" name="text" placeholder="enter some text, ex: Tell me a secret" className="Card__text"/>
+        <form className={`Card Card--${status}`} onSubmit={(props.handleSubmit)}>
+          <Field component="textarea" name="text" placeholder="enter some text, ex: Tell me a secret" 
+                 disabled={(status === 'next')} className="Card__text"/>
           <ErrorMessage name="text"/>
-          <button type="submit"> {status} </button>
+          <button className="btn" type="submit"> {status} </button>
         </form>
       )}
     />
