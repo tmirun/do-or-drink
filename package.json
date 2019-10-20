@@ -19,6 +19,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-test-renderer": "^16.10.2",
+    "reselect": "^4.0.0",
     "typescript": "3.6.4",
     "yup": "^0.27.0"
   },
@@ -31,6 +32,7 @@
     "@types/react": "16.9.9",
     "@types/react-dom": "16.9.2",
     "@types/react-redux": "^7.1.4",
+    "@types/react-router-dom": "^5.1.0",
     "@types/yup": "^0.26.24",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -53,6 +55,8 @@
     ]
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
