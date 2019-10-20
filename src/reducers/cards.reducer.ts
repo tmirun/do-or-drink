@@ -1,10 +1,10 @@
 import { ADD_CARD_ACTION, CardAction, EDIT_CARD_CATION } from './../actions/cards.actions';
 
-type Card = string;
+export type CardsState = string[];
 
-export type CardsState = Card[];
-
-const initState = [] as Card[];
+const initState: CardsState = [
+  'besa al siguiente jugador'
+];
 
 export default function cardsReducer (state = initState, action: CardAction): CardsState {
   switch(action.type) {
