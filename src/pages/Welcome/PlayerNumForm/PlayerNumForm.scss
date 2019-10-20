@@ -1,5 +1,21 @@
 @import '../../../scss/variables.scss';
+@import '~materialize-css/sass/materialize.scss';
 
 .PlayerNumForm {
   padding: $spacing-m;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    text-align: center;
+  }
+
+  &__error {
+    @extend .red-text, .text-lighten-1;
+    margin-top: $spacing-s;
+  }
+
+  button {
+    margin-top: $spacing-m;
+  }
 }

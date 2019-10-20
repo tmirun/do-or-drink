@@ -1,11 +1,12 @@
 import React from 'react'
 import { Formik, FormikProps, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import './PlayerNumForm.scss';
 import { setPlayerNum } from '../../../actions/playerNum.actions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ROUTE_PREPARATION_PATH } from '../../../AppRoutes';
+
+import './PlayerNumForm.scss';
 
 interface PlayerNumFormValues {
   playerNum: number;
@@ -23,21 +24,21 @@ export const PlayerNumForm: React.FC = () => {
   }
 
   return(
-    <div className="PlayerNumForm">
-      <Formik
-        initialValues={initValues}
-        onSubmit={onSubmit}
-        validationSchema = { Yup.object().shape({
-          playerNum: Yup.number().moreThan(0, 'Player must be more than 0 ')
-        })}
-        render={(props: FormikProps<PlayerNumFormValues>) => (
-          <form onSubmit={(props.handleSubmit)}>
-            <Field type="number" name="playerNum" placeholder="Player number"  className="PlayerNumForm__input"/>
-            <ErrorMessage name="playerNum"/>
-            <button type="submit"> SUBMIT </button>
-          </form>
-        )}
-      />
-    </div>
+    <Formik
+      initialValues={initValues}
+      onSubmit={onSubmit}
+      validationSchema = { Yup.object().shape({
+        playerNum: Yup.number().required().moreThan(2, 'Player must be more than 2')
+      })}
+      render={(props: FormikProps<PlayerNumFormValues>) => (
+        <form className="PlayerNumForm" onSubmit={(props.handleSubmit)}>
+          <Field type="number" name="playerNum" placeholder="Player number"/>
+          <ErrorMessage name="playerNum">
+            {msg => <div className='PlayerNumForm__error'>{msg}</div>}
+          </ErrorMessage>
+          <button className="btn" type="submit"> next &rarr; </button>
+        </form>
+      )}
+    />
   );
 }

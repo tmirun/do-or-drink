@@ -1,0 +1,14 @@
+@import '../../scss/variables.scss';
+
+.Welcome {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &__box {
+    padding: $spacing-m;
+    width: 100%;
+    max-width: 400px;
+  }
+}

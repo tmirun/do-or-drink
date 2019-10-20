@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes'
+
+import './App.scss';
 
 const App: React.FC = () => {
   return (
