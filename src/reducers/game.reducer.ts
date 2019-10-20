@@ -1,13 +1,16 @@
-import { GameAction, SELECT_CARD, INCLEMENT_COUNT } from './../actions/game.actions';
+import { CardStatus } from './../components/Card/Card';
+import { GameAction, SELECT_CARD, INCLEMENT_COUNT, SET_CARD_STATUS } from './../actions/game.actions';
 
 export type GameState = {
   count: number,
-  selectedCard: string | null;
+  selectedCard: string;
+  status: CardStatus;
 };
 
 const initState: GameState = {
   count: 0,
-  selectedCard: null
+  selectedCard: '',
+  status: 'next'
 };
 
 export default function gameReducer (state = initState, action: GameAction): GameState {
@@ -22,6 +25,12 @@ export default function gameReducer (state = initState, action: GameAction): Gam
       return {
         ...state, 
         count: state.count + 1
+      };
+
+    case SET_CARD_STATUS:
+      return {
+        ...state,
+        status: action.payload
       };
 
     default: 

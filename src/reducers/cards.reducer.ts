@@ -3,7 +3,9 @@ import { ADD_CARD_ACTION, CardAction, EDIT_CARD_CATION } from './../actions/card
 export type CardsState = string[];
 
 const initState: CardsState = [
-  'besa al siguiente jugador'
+  'besa al siguiente jugador',
+  'levanta y dar 3 vueltas',
+  'cuentame un secreto que no me quieres contar'
 ];
 
 export default function cardsReducer (state = initState, action: CardAction): CardsState {
