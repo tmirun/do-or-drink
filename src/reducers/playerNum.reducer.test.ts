@@ -1,14 +1,14 @@
 import { SET_PLAYER_NUM_ACTION } from './../actions/playerNum.actions';
 import playerNumReducer from './playerNum.reducer';
-import { PlayerNumActionType } from '../actions/playerNum.actions';
+import { PlayerNumAction } from '../actions/playerNum.actions';
 
 describe('playerNumReducer', () => {
   it('should return the initial state', () => {
-    expect(playerNumReducer(2, {} as PlayerNumActionType)).toEqual(2)
+    expect(playerNumReducer(2, {} as PlayerNumAction)).toEqual(2)
   })
 
   it('should return action value', () => {
-    const action: PlayerNumActionType = {
+    const action: PlayerNumAction = {
       type: SET_PLAYER_NUM_ACTION,
       payload: 10
     }
