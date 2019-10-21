@@ -4,17 +4,17 @@ import { Card, CardStatus } from '../../components/Card/Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../reducers';
 import { selectRandomCard } from '../../actions/game.actions';
+import { editCard } from '../../actions/cards.actions';
 
-const nextOrEdit = () => {
+const nextOrEdit = (): CardStatus => {
   return Math.round(Math.random()) ? 'next' : 'edit';
 }
 
 export const Game: React.FC = () => {
   const dispath = useDispatch();
   const cards = useSelector<AppState, string[]>( state => state.cards);
-  const selectedCard = useSelector<AppState, string>(state => {
-    return state.game.selectedCard
-  });
+  const selectedCard = useSelector<AppState, string>(state =>  state.game.selectedCard);
+  const selectedIndex = useSelector<AppState, number>(state =>  state.game.selectedIndex);
   const cardStatus: CardStatus = nextOrEdit();
 
   useEffect(() => {
@@ -23,7 +23,10 @@ export const Game: React.FC = () => {
     }
   }, [])
 
-  const onSubmit = () => {
+  const onSubmit = (text: string) => {
+    if(cardStatus === 'edit') {
+      dispath(editCard(selectedIndex, text))
+    }
     dispath(selectRandomCard(cards));
   }
 
