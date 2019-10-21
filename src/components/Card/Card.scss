@@ -54,6 +54,9 @@ $card-width: 300px;
 
   &--next {
     @extend .red, .lighten-2;
+    textarea {
+      border: none;
+    }
 
     button{ 
       @extend .red, .darken-4;
