@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './Preparation.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../reducers';
-import { createSelector } from 'reselect';
 import { Card, CardFormValues } from '../../components/Card/Card';
 import { addCard } from '../../actions/cards.actions';
 import { useHistory } from 'react-router';

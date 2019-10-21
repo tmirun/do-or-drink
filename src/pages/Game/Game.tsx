@@ -24,12 +24,15 @@ export const Game: React.FC = () => {
   }, [])
 
   const onSubmit = () => {
-    console.log('dispath')
     dispath(selectRandomCard(cards));
   }
 
   return (
     <div className="Game">
+      { cardStatus === 'next' ?
+        <h2><b>DO</b> &darr; OR <b>DRINK</b> &#9832;</h2> : 
+        <h2>you are very LUCKY, you CAN EDIT &#9998; this card text </h2>
+      }
       <Card status={cardStatus} text={selectedCard} onSubmit={onSubmit}/>
     </div>
   );
