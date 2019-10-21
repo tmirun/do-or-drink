@@ -32,8 +32,12 @@ $card-width: 300px;
     font-size: $font-size-l;
 
     &::placeholder {
-      color: $color-gray-9;  
+      color: $color-gray-7;  
     }
+  }
+
+  &__error {
+    @extend .red-text, .text-lighten-1;
   }
 
   > button {

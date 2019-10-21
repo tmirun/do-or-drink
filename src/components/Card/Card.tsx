@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, FormikProps, Field, ErrorMessage } from 'formik';
+import { Formik, FormikProps, Field, ErrorMessage, FormikActions } from 'formik';
 import * as Yup from 'yup';
 
 import './Card.scss';
@@ -9,10 +9,10 @@ export type CardStatus = 'add' | 'edit' | 'next';
 interface CardProps {
   status: CardStatus;
   text?: string;
-  onSubmit?: (text: string, ) => void;
+  onSubmit?: (text: string, formikActions: FormikActions<CardFormValues>) => void;
 }
 
-interface CardFormValues {
+export interface CardFormValues {
   text: string;
 }
 
@@ -23,9 +23,9 @@ export const Card: React.FC<CardProps> = ({status = false, text = '', onSubmit})
   
   const initValue: CardFormValues = { text };
   
-  const onSubmitHandle = (values: CardFormValues) => {
+  const onSubmitHandle = (values: CardFormValues, formikActions: FormikActions<CardFormValues>) => {
     if(onSubmit){
-      onSubmit(values.text)
+      onSubmit(values.text, formikActions);
     }
   }
 
@@ -44,7 +44,9 @@ export const Card: React.FC<CardProps> = ({status = false, text = '', onSubmit})
         <form className={`Card Card--${status}`} onSubmit={(props.handleSubmit)}>
           <Field component="textarea" name="text" placeholder="enter some text, ex: Tell me a secret" 
                  disabled={(status === 'next')} className="Card__text"/>
-          <ErrorMessage name="text"/>
+          <ErrorMessage name="text">
+            {msg => <div className='Card__error'>{msg}</div>}
+          </ErrorMessage>
           <button className="btn" type="submit"> {status} </button>
         </form>
       )}

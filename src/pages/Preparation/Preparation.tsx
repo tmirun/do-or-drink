@@ -1,32 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Preparation.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../reducers';
 import { createSelector } from 'reselect';
-import { Card } from '../../components/Card/Card';
+import { Card, CardFormValues } from '../../components/Card/Card';
 import { addCard } from '../../actions/cards.actions';
 import { useHistory } from 'react-router';
-
-const addCardsNumSelect = createSelector<AppState, number, number, number>( 
-  (state) => state.playerNum,
-  (state) => state.cards.length,
-  (playerNum, cardsNum) => playerNum - cardsNum
-)
+import { FormikActions } from 'formik';
 
 export const Preparation: React.FC = () => {
-  const addCardsNum = useSelector(addCardsNumSelect);
-  const store = useSelector(store => store);
+  const playerNum = useSelector<AppState, number>((state) => state.playerNum);
+  const [addCardsNum, setAddCardsNum] = useState(playerNum);
   const dispath = useDispatch();
   const history = useHistory();
 
-  const onCardSubmit = (text: string) => {
+  useEffect(() => {
+    if (addCardsNum <= 0) {
+      history.push('/game');
+    }
+  }, [addCardsNum])
+
+  const onCardSubmit = (text: string, {resetForm}: FormikActions<CardFormValues>) => {
     dispath(addCard(text));
-    history.push('/game');
+    setAddCardsNum(addCardsNum - 1);
+    resetForm();
   }
 
   return(
     <div className="Preparation">
-      <div>WRITE SOME CARD</div>
+      <h2>YOU need write {addCardsNum} cards</h2>
       <Card status="add" onSubmit={onCardSubmit}/>
     </div>
   );
