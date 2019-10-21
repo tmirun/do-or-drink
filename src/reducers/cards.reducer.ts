@@ -1,4 +1,4 @@
-import { ADD_CARD_ACTION, CardAction, EDIT_CARD_CATION } from './../actions/cards.actions';
+import { ADD_CARD, CardAction, EDIT_CARD } from './../actions/cards.actions';
 
 export type CardsState = string[];
 
@@ -10,10 +10,10 @@ const initState: CardsState = [
 
 export default function cardsReducer (state = initState, action: CardAction): CardsState {
   switch(action.type) {
-    case ADD_CARD_ACTION:
+    case ADD_CARD:
       return [...state, action.payload];
 
-    case EDIT_CARD_CATION:
+    case EDIT_CARD:
       const newState = [...state];
       newState[action.payload.index] = action.payload.text
       return newState;

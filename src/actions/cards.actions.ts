@@ -1,13 +1,13 @@
-export const ADD_CARD_ACTION = 'ADD_CARD_ACTION';
-export const EDIT_CARD_CATION = 'EDIT_CARD_CATION';
+export const ADD_CARD = 'ADD_CARD';
+export const EDIT_CARD = 'EDIT_CARD';
 
 interface AddCard {
-  type: typeof ADD_CARD_ACTION,
+  type: typeof ADD_CARD,
   payload: string;
 }
 
 interface EditCard {
-  type: typeof EDIT_CARD_CATION,
+  type: typeof EDIT_CARD,
   payload: {
     index: number;
     text: string;
@@ -18,14 +18,14 @@ export type CardAction = AddCard | EditCard;
 
 export function addCard(text: string): AddCard {
   return {
-    type: ADD_CARD_ACTION,
+    type: ADD_CARD,
     payload: text
   }
 }
 
 export function editCard(index: number,text: string): EditCard {
   return {
-    type: EDIT_CARD_CATION,
-    payload: { index, text}
+    type: EDIT_CARD,
+    payload: { index, text }
   }
 }

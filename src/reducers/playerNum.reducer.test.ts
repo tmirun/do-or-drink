@@ -1,4 +1,4 @@
-import { SET_PLAYER_NUM_ACTION } from './../actions/playerNum.actions';
+import { SET_PLAYER_NUM } from './../actions/playerNum.actions';
 import playerNumReducer from './playerNum.reducer';
 import { PlayerNumAction } from '../actions/playerNum.actions';
 
@@ -9,7 +9,7 @@ describe('playerNumReducer', () => {
 
   it('should return action value', () => {
     const action: PlayerNumAction = {
-      type: SET_PLAYER_NUM_ACTION,
+      type: SET_PLAYER_NUM,
       payload: 10
     }
 

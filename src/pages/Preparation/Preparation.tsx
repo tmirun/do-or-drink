@@ -17,7 +17,7 @@ export const Preparation: React.FC = () => {
     if (addCardsNum <= 0) {
       history.push('/game');
     }
-  }, [addCardsNum])
+  }, [addCardsNum, history])
 
   const onCardSubmit = (text: string, {resetForm}: FormikActions<CardFormValues>) => {
     dispath(addCard(text));
