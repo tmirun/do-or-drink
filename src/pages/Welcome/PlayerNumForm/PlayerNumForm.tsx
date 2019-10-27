@@ -19,7 +19,6 @@ export const PlayerNumForm: React.FC = () => {
   const initValues: PlayerNumFormValues = { playerNum: 0 }
 
   const onSubmit = (values: PlayerNumFormValues) => {
-    console.log('test');
     dispatch(setPlayerNum(values.playerNum));
     history.push(ROUTE_PREPARATION_PATH);
   }
