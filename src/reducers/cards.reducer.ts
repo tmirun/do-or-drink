@@ -2,13 +2,13 @@ import { ADD_CARD, CardAction, EDIT_CARD } from './../actions/cards.actions';
 
 export type CardsState = string[];
 
-const initState: CardsState = [
+export const cardsInitState: CardsState = [
   'besa al siguiente jugador',
   'levanta y dar 3 vueltas',
   'cuentame un secreto que no me quieres contar'
 ];
 
-export default function cardsReducer (state = initState, action: CardAction): CardsState {
+export default function cardsReducer (state = cardsInitState, action: CardAction): CardsState {
   switch(action.type) {
     case ADD_CARD:
       return [...state, action.payload];

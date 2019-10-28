@@ -1,17 +1,33 @@
+import { GlobalAction } from './../actions/global.actions';
 import { connectRouter } from 'connected-react-router';
-import { combineReducers } from "redux";
+import { combineReducers, AnyAction } from "redux";
 import { createBrowserHistory } from "history";
-import playerNumReducer from './playerNum.reducer';
-import cardsReducer from './cards.reducer';
-import gameReducer from './game.reducer';
+import playerNumReducer, { playerNumInitState } from './playerNum.reducer';
+import cardsReducer, { cardsInitState } from './cards.reducer';
+import gameReducer, { gameInitState } from './game.reducer';
+import globalReducer from './global.reducer';
+
 export const history = createBrowserHistory()
 
-const state = combineReducers({
+export const initState: AppState = {
+  playerNum: playerNumInitState,
+  cards: cardsInitState,
+  game: gameInitState,
+  router: undefined,
+}
+
+const reducers = combineReducers({
   playerNum: playerNumReducer,
   cards: cardsReducer,
   game: gameReducer,
   router: connectRouter(history),
 });
+
+const state = (state: any, action: AnyAction): any => {
+  const intermediateState = reducers(state, action);
+  const finalState = {...intermediateState, ...globalReducer(intermediateState, action as GlobalAction)}
+  return finalState;
+}
 
 export default state;
 
