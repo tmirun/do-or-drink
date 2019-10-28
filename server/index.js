@@ -22,4 +22,13 @@ app.post('/state', (req, res) => {
   res.json(state);
 })
 
+app.get('/downloadJson', (req, res ) => {
+  var data = JSON.stringify(state);
+  res.setHeader('Content-disposition', 'attachment; filename=state.json');
+  res.setHeader('Content-type', 'application/json');
+  res.write(data, function (err) {
+      res.end();}
+  )
+})
+
 app.listen(port, () => console.log(`listening on port: ${port}!`))
