@@ -1,21 +1,23 @@
 import { CardStatus } from './../components/Card/Card';
-import { GameAction, SELECT_CARD, INCLEMENT_COUNT, SET_CARD_STATUS } from './../actions/game.actions';
+import { GameAction, SELECT_CARD, INCLEMENT_COUNT, SET_CARD_STATUS, START_GAME } from './../actions/game.actions';
 
 export interface GameState {
   count: number,
   selectedCard: string;
   status: CardStatus;
   selectedIndex: number,
+  start: boolean,
 };
 
-const initState: GameState = {
+export const gameInitState: GameState = {
   count: 0,
   selectedCard: '',
   selectedIndex: 0,
-  status: 'next'
+  status: 'next',
+  start: false,
 };
 
-export default function gameReducer (state = initState, action: GameAction): GameState {
+export default function gameReducer (state = gameInitState, action: GameAction): GameState {
   switch(action.type) {
     case SELECT_CARD:
       return {
@@ -34,6 +36,12 @@ export default function gameReducer (state = initState, action: GameAction): Gam
       return {
         ...state,
         status: action.payload
+      };
+
+    case START_GAME:
+      return {
+        ...state,
+        start: true
       };
 
     default: 
