@@ -1,4 +1,12 @@
+@import "./scss/variables.scss";
+
 .App {
   text-align: center;
   height: 100%;
+
+  &__download {
+    position: fixed;
+    bottom: $spacing-m;
+    right: $spacing-m;
+  }
 }

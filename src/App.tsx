@@ -42,6 +42,7 @@ const App: React.FC = () => {
           <AppRoutes/>
         </Switch>
       }
+      <a className="App__download" href="http://localhost:3100/downloadJson">Download state</a>
     </div>
   );
 }
