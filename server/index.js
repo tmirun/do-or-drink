@@ -18,7 +18,6 @@ app.get('/state', (req, res) => {
 
 app.post('/state', (req, res) => {
   state = req.body;
-  console.log(state)
   res.json(state);
 })
 
